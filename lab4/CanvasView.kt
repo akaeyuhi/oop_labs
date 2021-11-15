@@ -12,13 +12,13 @@ class CanvasView @JvmOverloads constructor(context: Context,
     : View(context, attrs, defStyleAttr) {
 
     private val paint: Paint = Paint()
-    private val shapeObjectsEditor: MyEditor = MyEditor()
+    private val shapeObjectsEditor: MyEditor = MyEditor(this)
 
 
     // Called when the view should render its content.
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        shapeObjectsEditor.onPaint(canvas, paint)
+        shapeObjectsEditor.onPaint(canvas)
 
     }
 
@@ -48,18 +48,13 @@ class CanvasView @JvmOverloads constructor(context: Context,
     }
 
     fun selectEditor(id: Int) {
-        var editor: ShapeEditor? = null
-        val shapes = shapeObjectsEditor.getShapes()
         when(id) {
-            0, R.id.dot_button -> editor = PointEditor(shapes, this)
-            R.id.line_button -> editor = LineEditor(shapes, this)
-            R.id.rect_button -> editor = RectEditor(shapes, this)
-            R.id.oval_button -> editor = EllipseEditor(shapes, this)
-            R.id.oval_line_button -> editor = EllipseLineEditor(shapes, this)
-            R.id.cube_button -> editor = CubeEditor(shapes, this)
-        }
-        if (editor != null) {
-            shapeObjectsEditor.start(editor)
+            0, R.id.dot_button -> shapeObjectsEditor.start(PointShape())
+            R.id.line_button -> shapeObjectsEditor.start(LineShape())
+            R.id.rect_button -> shapeObjectsEditor.start(RectShape())
+            R.id.oval_button -> shapeObjectsEditor.start(EllipseShape())
+            R.id.oval_line_button -> shapeObjectsEditor.start(EllipseLineShape())
+            R.id.cube_button -> shapeObjectsEditor.start(CubeShape())
         }
     }
 
