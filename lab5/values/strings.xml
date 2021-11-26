@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">lab3oop</string>
+    <string name="lab_title">Lab 5 OOP</string>
+    <string name="clear_button">x</string>
+    <string name="dot_button">Крапка</string>
+    <string name="line_button">Лінія</string>
+    <string name="rect_button">Прямокутник</string>
+    <string name="oval_button">Еліпс</string>
+    <string name="oval_line_button">Лінія з кружочками</string>
+    <string name="cube_button">Куб</string>
+    <string name="go_button">До таблиці</string>
+    <string name="return_button">До редактора</string>
+    <string name="save_button">Зберегти</string>
+    <string name="load_button">Завантажити</string>
+</resources>
