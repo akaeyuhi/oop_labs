@@ -11,5 +11,6 @@
     <string name="go_button">До таблиці</string>
     <string name="return_button">До редактора</string>
     <string name="save_button">Зберегти</string>
-    <string name="load_button">Завантажити</string>
+    <string name="load_button">Load</string>
+    <string name="to_table_button">Table</string>
 </resources>

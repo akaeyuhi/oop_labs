@@ -7,25 +7,165 @@
         android:layout_height="match_parent"
         tools:context=".TableActivity">
 
-    <Button
-            android:text="@string/return_button"
+    <TextView
+            android:text="@string/lab_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/to_editor_button"
+            android:layout_height="wrap_content" android:id="@+id/textView"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.95" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.976"/>
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp" android:textStyle="bold"
+            android:textSize="34sp" android:textColor="#3F51B5"/>
+    <com.example.lab3oop.CanvasView
+            android:layout_width="391dp"
+            android:layout_height="244dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" android:id="@+id/paintField"
+    />
+
+    <Button
+            android:text="@string/clear_button"
+            android:layout_width="38dp"
+            android:layout_height="45dp" android:id="@+id/clearButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/paintField"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.957"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.017"/>
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:background="@color/purple_500"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize" android:id="@+id/toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.333">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+                android:id="@+id/toolbar_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center">
+            <ImageButton
+                    android:contentDescription="@string/dot_button"
+                    android:id="@+id/dot_button"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    tools:layout_editor_absoluteY="679dp" android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toEndOf="@+id/toolbar" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="10dp" android:background="@drawable/ic_fiber_manual_record_white_18dp"
+                    android:scaleType="fitCenter"
+                    android:padding="20dp"
+                    android:adjustViewBounds="true"
+                    android:backgroundTint="#CDFFFFFF"/>
+            <ImageButton
+                    android:contentDescription="@string/line_button"
+                    android:id="@+id/line_button"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    tools:layout_editor_absoluteY="679dp" android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toEndOf="@+id/toolbar" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="10dp" android:height="16dp" android:width="16dp"
+                    android:background="@drawable/ic_linear_scale_white_24dp"
+                    android:scaleType="fitCenter"
+                    android:padding="8dp"
+                    android:adjustViewBounds="true" android:backgroundTint="#CCFFFFFF"/>
+            <ImageButton
+                    android:contentDescription="@string/rect_button"
+                    android:id="@+id/rect_button"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    tools:layout_editor_absoluteY="679dp" android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toEndOf="@+id/toolbar" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="10dp" android:height="16dp" android:width="16dp"
+                    android:background="@drawable/ic_crop_16_9_white_24dp"
+                    android:scaleType="fitCenter"
+                    android:padding="8dp"
+                    android:adjustViewBounds="true" android:backgroundTint="#CCFFFFFF"/>
+            <ImageButton
+                    android:contentDescription="@string/oval_button"
+                    android:id="@+id/oval_button"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    tools:layout_editor_absoluteY="679dp" android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toEndOf="@+id/toolbar" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="10dp" android:height="16dp" android:width="16dp"
+                    android:background="@drawable/ic_radio_button_unchecked_white_24dp"
+                    android:scaleType="fitCenter"
+                    android:padding="8dp"
+                    android:adjustViewBounds="true" android:backgroundTint="#CCFFFFFF"/>
+            <ImageButton
+                    android:contentDescription="@string/oval_line_button"
+                    android:id="@+id/oval_line_button"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    tools:layout_editor_absoluteY="679dp" android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toEndOf="@+id/toolbar" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="10dp" android:height="16dp" android:width="16dp"
+                    android:background="@drawable/ic_flow_line_svgrepo_com"
+                    android:scaleType="fitCenter"
+                    android:padding="8dp"
+                    android:adjustViewBounds="true" android:backgroundTint="#CCFFFFFF"/>
+            <ImageButton
+                    android:contentDescription="@string/cube_button"
+                    android:id="@+id/cube_button"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    tools:layout_editor_absoluteY="679dp" android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toEndOf="@+id/toolbar" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="10dp" android:height="16dp" android:width="16dp"
+                    android:background="@drawable/ic_cube_svgrepo_com"
+                    android:scaleType="fitCenter"
+                    android:padding="8dp"
+                    android:adjustViewBounds="true" android:backgroundTint="#CCFFFFFF" android:paddingEnd="12dp"/>
+
+        </LinearLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/to_table_button"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/toolbar" app:layout_constraintEnd_toStartOf="@+id/clearButton"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/paintField" app:layout_constraintHorizontal_bias="0.064"
+            android:text="@string/go_button" app:layout_constraintVertical_bias="0.0"/>
+    <Button
+            android:text="@string/load_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/loadButton"
+            app:layout_constraintEnd_toStartOf="@+id/clearButton"
+            app:layout_constraintStart_toEndOf="@+id/to_table_button"
+            app:layout_constraintBottom_toTopOf="@+id/toolbar"
+            app:layout_constraintTop_toBottomOf="@+id/paintField" app:layout_constraintHorizontal_bias="0.437"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" app:layout_constraintVertical_bias="0.0"/>
+    <com.example.lab3oop.ShapeTable
+            android:layout_width="393dp"
+            android:layout_height="217dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/shapeTable" android:layout_marginTop="404dp"
+            app:layout_constraintBottom_toTopOf="@+id/toolbar" app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.444"/>
     <Button
             android:text="@string/save_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/save"
+            android:layout_width="97dp"
+            android:layout_height="46dp" android:id="@+id/save"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.223" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.976"/>
-    <com.example.lab3oop.ShapeTable
-            android:layout_width="411dp"
-            android:layout_height="656dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.356" app:layout_constraintBottom_toTopOf="@+id/to_editor_button"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/shapeTable"/>
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.912"
+            app:layout_constraintHorizontal_bias="0.949"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

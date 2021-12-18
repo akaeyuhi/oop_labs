@@ -1,6 +1,7 @@
 package com.example.lab3oop
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
@@ -32,13 +33,14 @@ class MainActivity : AppCompatActivity() {
         color.alpha = 120
         popupView.background = color
         val table: ShapeTable = popupView.findViewById(R.id.shapeTable)
-        EventManager.subscribe("shape_update", table)
-        EventManager.subscribe("shape_delete-all", table)
+        TableManager.subscribe("shape_update", table)
+        TableManager.subscribe("shape_delete-all", table)
+        MyEditorManager.subscribe("table_delete", MyEditor)
 
         Toolbar(findViewById(R.id.toolbar_layout), canvasView, applicationContext)
         findViewById<Button>(R.id.clearButton).setOnClickListener {
             canvasView.clearCanvas()
-            EventManager.notify("shape_delete-all", null)
+            TableManager.notify("shape_delete-all", null)
         }
         findViewById<Button>(R.id.to_table_button).setOnClickListener {
             popup.showAtLocation(findViewById(R.id.main), Gravity.CENTER, 0, 0)
@@ -46,6 +48,10 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.loadButton).setOnClickListener {
             MyEditor.parseData()
             Toast.makeText(this, "Завантежено з файлу", Toast.LENGTH_SHORT).show()
+        }
+        findViewById<Button>(R.id.toFullTable).setOnClickListener {
+            val intent = Intent(this, TableActivity::class.java)
+            startActivity(intent)
         }
         popupView.findViewById<Button>(R.id.save).setOnClickListener {
             table.saveText()

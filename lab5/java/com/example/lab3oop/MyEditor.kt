@@ -6,6 +6,7 @@ import android.os.Build
 import android.view.MotionEvent
 import androidx.annotation.RequiresApi
 
+/*class MyEditor private constructor() {*/
 object MyEditor {
 
     private var currShape: Shape? = null
@@ -17,10 +18,22 @@ object MyEditor {
     private var y1: Float = 0F
     private var y2: Float = 0F
 
+
+    /*
+    companion object {
+        private var inst: MyEditor? = null
+
+        fun getInstance(): MyEditor? {
+         if(inst != null) return inst
+         else inst = MyEditor()
+         return inst
+        }
+    }
+    */
     @RequiresApi(Build.VERSION_CODES.N)
     private fun addShape(shape: Shape) {
         shapes.add(shape)
-        EventManager.notify("shape_update", shape)
+        TableManager.notify("shape_update", shape)
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -131,6 +144,11 @@ object MyEditor {
     fun parseData() {
         addShapes(TableReader.readFile())
         context?.invalidate()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun update(event: String, data: Int) {
+        deleteShape(data)
     }
 
 }

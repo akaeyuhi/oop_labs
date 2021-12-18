@@ -70,7 +70,7 @@ class ShapeTable @JvmOverloads constructor(
     @RequiresApi(Build.VERSION_CODES.N)
     private fun clickHandler(tableRow: TableRow) {
         val id: String = (tableRow.getChildAt(0) as TextView).text as String
-        MyEditor.deleteShape(id.toInt())
+        MyEditorManager.notify("table_delete", id.toInt())
         removeView(tableRow)
     }
 
