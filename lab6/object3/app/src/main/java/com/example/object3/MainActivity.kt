@@ -10,7 +10,7 @@ import com.jjoe64.graphview.series.LineGraphSeries
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var array: Array<Double>
+    private lateinit var array: ArrayList<Double>
     private var text = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity() {
     private fun getArray() {
         val text = ArrayList<String>(text.split(","))
         text.removeLast()
-        array = Array(text.size) { 1.1 }
+        array = arrayListOf()
         for(i in 0 until text.size - 1) {
-            array[i] = text[i].toDouble()
+            array.add(text[i].toDouble())
         }
         array.sort()
     }
@@ -37,8 +37,11 @@ class MainActivity : AppCompatActivity() {
         for(i in array.indices) {
             dataArray[i] = DataPoint(i.toDouble(), array[i])
         }
+
         val graph = findViewById<View>(R.id.labGraph) as GraphView
         val series: LineGraphSeries<DataPoint> = LineGraphSeries(dataArray)
+        series.title = "Графік lab6"
+        series.isDrawDataPoints = true
         graph.addSeries(series)
     }
 
