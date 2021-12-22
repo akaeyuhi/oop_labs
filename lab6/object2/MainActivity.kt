@@ -1,18 +1,15 @@
 package com.example.object2
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.os.Build.VERSION_CODES.N
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import java.math.RoundingMode
-import kotlin.math.round
 import kotlin.random.Random.Default.nextDouble
-import kotlin.random.Random.Default.nextInt
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -42,6 +39,8 @@ class MainActivity : AppCompatActivity() {
         array = Array(n) { 0.0 }
         createArray()
         textArray()
+        initTable()
+        Toast.makeText(this, "${array.indices}", Toast.LENGTH_LONG).show()
         findViewById<Button>(R.id.submitButton).setOnClickListener {
             onClick(it)
         }
@@ -56,22 +55,44 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun textArray() {
-        val textView: TextView = findViewById(R.id.vectorView)
         var text = ""
         for (i in array) {
-            text += "$i, "
+            text += "$i "
         }
-        textView.text = text
         textOut = text
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun initTable() {
+        val table = findViewById<TableLayout>(R.id.table)
+        val firstRow = TableRow(this)
+        val text = TextView(this)
+        text.text = "Index\tValue"
+        firstRow.addView(text, TableRow.LayoutParams(
+            TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.5f)
+        )
+        table.addView(firstRow)
+        array.forEachIndexed { i, it ->
+            val row = TableRow(this)
+            val textInsert = "$i\t$it"
+            val view = TextView(this)
+            view.text = textInsert
+            row.addView(view, TableRow.LayoutParams(
+                TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 0.5f)
+            )
+            table.addView(row)
+        }
     }
 
     private fun onClick(view: View) {
         val launchIntent = applicationContext.packageManager
             .getLaunchIntentForPackage("com.example.object3")
 
+
         if (launchIntent != null) {
-            launchIntent.putExtra("text0", textOut)
-            startActivity(launchIntent)
+            val resultIntent = Intent()
+            resultIntent.putExtra("text0", textOut)
+            setResult(1, resultIntent);
             finish()
         } else {
             Toast.makeText(

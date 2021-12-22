@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context="com.example.lab6oop.MainActivity">
     <TextView
             android:text="n"
             android:layout_width="65dp"
@@ -68,5 +68,5 @@
             android:layout_height="51dp" android:id="@+id/submitButton"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.498" app:layout_constraintVertical_bias="0.892"/>
+            app:layout_constraintHorizontal_bias="0.498" app:layout_constraintVertical_bias="0.772"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
